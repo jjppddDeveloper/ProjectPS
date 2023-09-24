@@ -1,3 +1,6 @@
+# 外部関数読み込み
+. .\10_Function.ps1
+
 # アセンブリの読み込み
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -36,7 +39,8 @@ $label.Text = "好きな言葉を入力してください"
 $cmbBox = New-Object System.Windows.Forms.ComboBox
 $cmbBox.Location = New-Object System.Drawing.Point(10, 70)
 $cmbBox.Size = New-Object System.Drawing.Size(225, 50)
-$cmbBox.Items.AddRange(@("Item 1", "Item 2", "Item 3"));
+#$cmbBox.Items.AddRange(@("Item 1", "Item 2", "Item 3"));
+$cmbBox.Items.AddRange(@(GetDataFile(".\99_Config.txt")));
 
 # キーとボタンの関係
 $form.AcceptButton = $OKButton
